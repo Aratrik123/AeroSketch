@@ -44,6 +44,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
      .typewriter {
           overflow: hidden;
@@ -128,11 +130,109 @@
 
   </div>
 
+  <section class="about" id="about">
+    <div class="content">
+      <div class="items">
 
-  
+        <div class="image">
+          <img src="./assets/about.jpg" alt="" srcset="" data-aos="zoom-in" data-aos-duration="2000">
+        </div>
+        <div class="item">
+          <div class="item-content">
+            <h2 class="about-title">
+              About <span class="highlight-text">Us</span>
+            </h2>
+            <div class="about-desc">
+              <p>
+                <span style="color: rgb(87, 138, 221);">AeroSketch</span> introduces a revolutionary way to create art and write digitally, leveraging cutting-edge technologies such as OpenCV and MediaPipe. Using this you can unleash your creativity using nothing but your hands and gestures. Utilizing advanced computer vision algorithms, it detects intricate hand gestures in real-time, translating them into strokes and commands on a digital canvas. Whether you're sketching, writing notes, or painting, the experience is intuitive and responsive.
+              </p>
+            </div>
+            
+          </div>
+
+          <div class="item-data">
+            <div class="col">
+              <span class="num" data-val="4">0</span>
+              <span class="label">Vibrant colours</span>
+            </div>
+            <div class="col">
+              <span class="num" data-val="1">0</span>
+              <span>Virtual Canvas</span>
+            </div>
+            <div class="col">
+              <span class="num" data-val="176">0</span>
+              <span>milliseconds response time 
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="heading">
+      <h1 class="title">Features of <span style="color: #3872bd;">AeroSketch</span></h1>
+      <p class="subtitle">Our Model supports</p>
+    </div>
+    <div class="content">
+      <div class="items">
+
+        <div class="card">
+          <div class="image">
+            <img src="./assets/discover/discover-1.jpg" alt="" srcset="">
+          </div>
+          <div class="content-card">
+            <h4>Hand tracking mechanism</h4>
+            <p>
+             Supports finger gestures to write and draw.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img src="./assets/discover/discover-2.jpg" alt="" srcset="">
+          </div>
+          <div class="content-card">
+            <h4>different colours</h4>
+            <p>
+              Allows the user to select different vibrant colours.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img src="./assets/discover/discover-3.jpg" alt="" srcset="">
+          </div>
+          <div class="content-card">
+            <h4>Virtual Canvas</h4>
+            <p>
+              A real time digital canvas taking inputs from the webcam.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="image">
+            <img src="./assets/discover/discover-4.jpg" alt="" srcset="">
+          </div>
+          <div class="content-card">
+            <h4>Dual theme canvas</h4>
+            <p>
+              Select beteween a light and dark mode canvas.
+            </p>
+          </div>
+        </div>
 
 
-  
+      </div>
+    </div>
+  </section>
 
 
   <section class="initiation" id="initiation">
@@ -188,12 +288,15 @@
       <h1><span class="highlight">AeroSketch</span> v1.0</h1>
         </div>
     <div class="rights">
-      Copyrights @Chibi404 
+      Copyrights @QuaxCode
     </div>
   </footer>
   <script src="main.js"></script>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
+    AOS.init();
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('theme-toggle');
       
@@ -219,10 +322,6 @@
       });
     });
     </script>
-    
-
-  
-
 </body>
 
 </html>
