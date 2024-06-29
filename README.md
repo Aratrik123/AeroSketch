@@ -48,7 +48,7 @@ AeroSketch operates by capturing real-time video input from a camera, analyzing 
 
 ## 📸 Screenshots
 
-![Gesture Drawing](screenshots/gesture_drawing.png)
+![Gesture Drawing](C:\Users\Admin\OneDrive\Pictures\Screenshots\Screenshot (929).png)
 ![Color Selection](screenshots/color_selection.png)
 ![Live Sketch](screenshots/live_sketch.png)
 
