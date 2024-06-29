@@ -130,22 +130,23 @@
             const startSketchBtn = document.getElementById('startSketchBtn');
 
             startSketchBtn.addEventListener('click', function() {
-                startVideoFeed();
+                //startVideoFeed();
+                window.open ('/video_feed','blank', 'width=640, height=500s')
             });
 
-            function startVideoFeed() {
+            /*function startVideoFeed() {
                 const videoContainer = document.createElement('div');
                 videoContainer.id = 'videoContainer';
 
                 const videoFeed = document.createElement('img');
                 videoFeed.id = 'videoFeed';
-                videoFeed.src = '/video_feed';
+                videoFeed.src = '/video';
                 videoFeed.width = '640';
                 videoFeed.height = '480';
 
                 videoContainer.appendChild(videoFeed);
                 document.body.appendChild(videoContainer);
-            }
+            }*/
         });
 
 </script>

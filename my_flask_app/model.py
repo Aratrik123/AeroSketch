@@ -3,38 +3,30 @@ import numpy as np
 import mediapipe as mp
 from collections import deque
 
-
 # Initialize deque arrays to store points of different colors
 bpoints = [deque(maxlen=1024)]
 gpoints = [deque(maxlen=1024)]
 rpoints = [deque(maxlen=1024)]
 ypoints = [deque(maxlen=1024)]
 
-
 # Initialize indices to keep track of points in respective color arrays
 indices = {'blue': 0, 'green': 0, 'red': 0, 'yellow': 0}
 
-
 # Kernel for image dilation
 kernel = np.ones((5, 5), np.uint8)
-
 
 # Color values in BGR format for light mode
 colors_light = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255)]
 colorIndex = 0
 
-
 # Color values in BGR format for dark mode
 colors_dark = [(255, 102, 102), (102, 255, 102), (102, 102, 255), (255, 255, 102)]
-
 
 # Initialize the canvas
 paintWindow = np.zeros((471, 636, 3), dtype=np.uint8)
 paintWindow[:] = (0, 0, 0)  # Start with a black canvas for dark mode
 
-
 cv2.namedWindow('Paint', cv2.WINDOW_AUTOSIZE)
-
 
 # Define button positions and radius
 button_radius = 30
@@ -46,10 +38,8 @@ buttons = {
     "YELLOW": (552, 33)
 }
 
-
 # Mode toggle: True for dark mode, False for light mode
 is_dark_mode = True  # Start with dark mode
-
 
 def draw_buttons(frame, colors):
     for button in buttons:
@@ -63,42 +53,35 @@ def draw_buttons(frame, colors):
             color = colors[list(buttons.keys()).index(button) - 1]
             cv2.circle(frame, buttons[button], button_radius, color, -1)
 
-
 # Initialize Mediapipe Hands
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(max_num_hands=1, min_detection_confidence=0.7)
 mpDraw = mp.solutions.drawing_utils
 
-
 def gesture_to_paint():
     global bpoints, gpoints, rpoints, ypoints, indices, paintWindow, is_dark_mode, colorIndex
-# Initialize webcam
+    # Initialize webcam
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
 
     while True:
         # Read each frame from the webcam
         ret, frame = cap.read()
         if not ret:
+            print("Failed to grab frame")
             break
-
 
         # Flip the frame vertically
         frame = cv2.flip(frame, 1)
         framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-
         # Set the color scheme based on the current mode
         colors = colors_dark if is_dark_mode else colors_light
-
 
         # Draw buttons on the frame
         draw_buttons(frame, colors)
 
-
         # Get hand landmark prediction
         result = hands.process(framergb)
-
 
         # Process the result
         if result.multi_hand_landmarks:
@@ -109,15 +92,12 @@ def gesture_to_paint():
                     lmy = int(lm.y * 480)
                     landmarks.append([lmx, lmy])
 
-
                 # Draw landmarks on frame
                 mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
-
 
             fore_finger = (landmarks[8][0], landmarks[8][1])
             thumb = (landmarks[4][0], landmarks[4][1])
             cv2.circle(frame, fore_finger, 3, (0, 255, 0), -1)
-
 
             # Check for gestures to switch color or clear
             if thumb[1] - fore_finger[1] < 30:
@@ -167,7 +147,6 @@ def gesture_to_paint():
                 elif key == 'yellow':
                     ypoints.append(deque(maxlen=512))
 
-
         # Draw lines of all the colors on the canvas and frame
         points = [bpoints, gpoints, rpoints, ypoints]
         for i in range(len(points)):
@@ -181,8 +160,8 @@ def gesture_to_paint():
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
         key = cv2.waitKey(1)
         if key == ord('c'):
             break
@@ -193,9 +172,6 @@ def gesture_to_paint():
             else:
                 paintWindow[:] = (255, 255, 255)  # Set paintWindow background to white for light mode
 
-# Release the webcam and destroy all windows
+    # Release the webcam and destroy all windows
     cap.release()
     cv2.destroyAllWindows()
-
-
-
