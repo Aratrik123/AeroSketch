@@ -46,6 +46,7 @@ h4 {
     z-index: 1001;
 }
 
+
 .filled{
     width: 0%;
     height: 100%;
@@ -68,6 +69,12 @@ h4 {
 .nav-bar.active {
   background-color: #0d285b;
   box-shadow: 0.4px 0.4px 0.4px #6b6b6b;
+}
+
+.ara {
+  margin-right:10px;
+  width: 1px;
+  height: 1px;
 }
 
 .content {
@@ -93,6 +100,8 @@ h4 {
   line-height: 22px;
   text-transform: capitalize;
   color: #fff;
+  margin-left: 10px;
+  margin-top: 50px;
 }
 
 .nav-bar .navigation {
@@ -100,6 +109,7 @@ h4 {
   display: flex;
   align-items: center;
   gap: 1.4rem;
+  margin-bottom: auto;
 }
 
 .nav-bar .navigation .link a {
