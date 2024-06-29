@@ -48,9 +48,9 @@ AeroSketch operates by capturing real-time video input from a camera, analyzing 
 
 ## 📸 Screenshots
 
-![Gesture Drawing](C:\Users\Admin\OneDrive\Pictures\Screenshots\Screenshot (929).png)
-![Color Selection](screenshots/color_selection.png)
-![Live Sketch](screenshots/live_sketch.png)
+![Gesture Drawing](my_flask_app\static\assets\Screenshot (929).png)
+![Color Selection](my_flask_app\static\assets\Screenshot (928).png)
+![Live Sketch](my_flask_app\static\assets\Screenshot (930).png)
 
 ## 🤝 Contributing
 
